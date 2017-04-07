@@ -19,7 +19,7 @@ class HDHomeRunMD:
 	
 	def extract_show(self):
 		for md in self.metaData:
-			if md[0] == '"DisplayGroupTitle"' :
+			if md[0] == '"Title"' :
 				return md[1].replace('"',"")
 
 	def extract_subshow(self):
