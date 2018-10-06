@@ -9,10 +9,10 @@ It uses the [thetvdb]([http://www.thetvdb.com]) for season and episode informati
 
 ### Current Status   
 At this stage scripts are still in development and dependent on updates from SiliconDust.  
-*archive2plex.py* will parse the HDHR recordings folder, match the series and episodes to thetvdb and then archive the files to Plex folder depending on settings in the configuration file.  
-*fix_filenames.py* iterates through all the files in the HDHR recordings folder, scans the TS file for meta data and then does a look up on thetvdb for missing info before renaming the file to match Plex requirements (and optionally the folder).  
-*create_mdonly.py* provides a simple script to take the output metadata from the logfiles and generate a valid MPG for testing.  
-*dump_md.py* scans an MPG file for the HDHR metadata section and dumps to STDOUT  
+*archive2plex.py* will parse the HDHR recordings folder, match the series and episodes to thetvdb and then archive the files to Plex folder depending on settings in the configuration file.
+*fix_filenames.py* iterates through all the files in the HDHR recordings folder, scans the TS file for meta data and then does a look up on thetvdb for missing info before renaming the file to match Plex requirements (and optionally the folder).
+*create_mdonly.py* provides a simple script to take the output metadata from the logfiles and generate a valid MPG for testing.
+*dump_md.py* scans an MPG file for the HDHR metadata section and dumps to STDOUT
 
 ### Tested Platforms   
 QNAP-x51 with QTS 4.1.4/4.2  (linux)
