@@ -6,6 +6,7 @@ import os
 import sys
 import logging
 import time
+import re
 from time import strftime
 
 import hdhr_path
@@ -27,6 +28,7 @@ if __name__ == "__main__":
 	pathTools = hdhr_path.HDHomeRunPath()
 	hdhr_path.shows2skip = tools.get_skip_shows()
 	hdhr_path.languages = tools.get_languages()
+        
 	logging.debug('Skip Shows ' + str(hdhr_path.shows2skip))
 	logging.debug('Languages ' + str(hdhr_path.languages))
 
@@ -67,6 +69,12 @@ if __name__ == "__main__":
 			logging.info('Setting showname to: ' + md['show'])
 			showname = md['show']
 
+                # If Windows config is set, fix the name of the show to be windows filename compliant
+                if tools.getWindows():
+                        windowsname = re.sub(r'[\\/:"*?<>|]+', '', showname)
+                        logging.debug(' for Windows compatibility, replacing: ' + showname + ' with: ' + windowsname)
+                        showname = windowsname
+                        
 		# Ready to rename the file for easier Plex integration..
 		logging.info('Renaming ' + f)
 		pathTools.rename_episode(f,showname,md['season'],md['epnum'],md['eptitle'],tools.dirRename(), tools.forceEnabled())

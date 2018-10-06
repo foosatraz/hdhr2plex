@@ -33,7 +33,7 @@ hdhr_cfg_days2delete = 'days2delete'
 hdhr_cfg_postproc = 'postproc'
 hdhr_cfg_force_shows = 'forceshows'
 hdhr_cfg_languages = 'languages'
-
+hdhr_cfg_WindowsCompatibleFilenames = 'windowscompatiblefilenames'
 
 class ScriptTools:
 
@@ -54,6 +54,7 @@ class ScriptTools:
 		self.skip_list = []
 		self.force_list = []
 		self.lang_list = []
+                self.windows = False
 
 		arg_parser = argparse.ArgumentParser(description='Process command line args')
 		for n in hdhr_args_list:
@@ -182,6 +183,13 @@ class ScriptTools:
 						self.lang_list.append(sections[language_list_key][key])
 				print 'Setting up theTVDB laguanges: ', self.lang_list
 
+                        if key == hdhr_cfg_WindowsCompatibleFilenames:
+				if sections[hdhr_cfg_main][hdhr_cfg_WindowsCompatibleFilenames] == 'True':
+					self.windows = True
+				print 'Using Windows compatible filenames: ', self.windows
+
+                                
+
 
 		# Extract Logging Information
 		loglevel = 'warning'
@@ -249,3 +257,6 @@ class ScriptTools:
 		
 	def getPostProc(self):
 		return self.postproc
+
+        def getWindows(self):
+                return self.windows
