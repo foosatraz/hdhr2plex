@@ -29,7 +29,7 @@ class TVDBMatcher:
 		epCandidates = []
 		logging.info('Finding Episode/Season details by showname and airdate')
 		logging.debug('Connecting to theTVdb.com with languages: ' +str(languages))
-		tvdb = tvdb_api.Tvdb(language=str(languages))
+		tvdb = tvdb_api.Tvdb(None)
 		logging.debug('Finding the shows with the name ' + showname)
 		seriesname = ''
 		season = 0
@@ -62,7 +62,7 @@ class TVDBMatcher:
 
 	def getTVDBSeriesName(self, showname, seriesID):
 		logging.debug('Connecting to theTVdb.com with languages: ' +str(languages))
-		tvdb = tvdb_api.Tvdb(language=str(languages))
+		tvdb = tvdb_api.Tvdb(None)
 		if languages:
 			tvdb.language = languages
 		logging.debug('Finding the shows with the ID ' + seriesID)
@@ -143,4 +143,3 @@ class TVDBMatcher:
 		# if nothing matched need to just return some dummy data
 		logging.debug('No candidates found - setting it to blanks')
 		return {'seriesname':'', 'season_num':'', 'episode_num':''}
-			

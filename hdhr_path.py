@@ -25,9 +25,11 @@ languages = {}
 class HDHomeRunPath:
 	try:
 		basestring  # attempt to evaluate basestring
+		@staticmethod
 		def isstr(s):
 			return isinstance(s, basestring)
 	except NameError:
+		@staticmethod
 		def isstr(s):
 			return isinstance(s, str)
 
@@ -156,12 +158,12 @@ class HDHomeRunPath:
 		return newTitle
 	
 	def fix_filename(self, show, season, episode, epTitle):
-		basename = show + '-' + episode
+		basename = show + ' - ' + episode
 		newTitle = self.fix_title(epTitle)
 		if newTitle == '':
 			return basename + '.mpg'
 		else:
-			return basename + '-' + newTitle + '.mpg'
+			return basename + ' - ' + newTitle + '.mpg'
 	
 	def is_already_fixed(self, filename):
 		# Checking file is form of <show>-S<season number>E<episode number>[- title]
